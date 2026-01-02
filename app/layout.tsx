@@ -15,6 +15,9 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   title: "GIF to ASCII Converter",
   description: "Transforme seus GIFs em arte ASCII animada",
+  icons: {
+    icon: '/icon.svg',
+  },
 };
 
 export default function RootLayout({
