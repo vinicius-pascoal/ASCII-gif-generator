@@ -1,36 +1,85 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# GIF to ASCII Converter
 
-## Getting Started
+Conversor de GIFs para arte ASCII animada, construído com Next.js e TypeScript.
 
-First, run the development server:
+## 🎬 Funcionalidades
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+- **Upload de GIF**: Arraste e solte ou selecione arquivos GIF
+- **Conversão para ASCII**: Converte cada frame do GIF em arte ASCII
+- **Prévia em Tempo Real**: Visualize a animação ASCII antes de baixar
+- **Personalização Completa**:
+  - Ajuste a largura (resolução ASCII)
+  - Configure o tamanho da fonte
+  - Escolha cores de texto e fundo
+  - Inverta o brilho para efeitos diferentes
+- **Download**: Baixe o GIF ASCII gerado
+
+## 🚀 Como Usar
+
+1. **Instale as dependências**:
+   ```bash
+   npm install
+   ```
+
+2. **Execute o servidor de desenvolvimento**:
+   ```bash
+   npm run dev
+   ```
+
+3. **Abra no navegador**: http://localhost:3000
+
+4. **Converta seu GIF**:
+   - Faça upload de um arquivo GIF
+   - Ajuste as configurações de conversão
+   - Clique em "Converter para ASCII"
+   - Veja a prévia da animação
+   - Clique em "Baixar GIF ASCII" para salvar
+
+## 🛠️ Tecnologias
+
+- **Next.js 16** - Framework React
+- **TypeScript** - Tipagem estática
+- **Tailwind CSS** - Estilização
+- **gifuct-js** - Parser de GIF
+- **gif.js** - Geração de GIF
+
+## 📦 Estrutura do Projeto
+
+```
+├── app/
+│   ├── layout.tsx      # Layout principal
+│   ├── page.tsx        # Página principal
+│   └── globals.css     # Estilos globais
+├── components/
+│   ├── GifUploader.tsx    # Upload de arquivos
+│   ├── AsciiPreview.tsx   # Prévia da animação
+│   └── ControlPanel.tsx   # Painel de controles
+├── lib/
+│   ├── ascii-converter.ts # Lógica de conversão ASCII
+│   └── gif-processor.ts   # Processamento de GIF
+└── public/
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## 🎨 Personalização
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+O conversor oferece várias opções de personalização:
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+- **Largura**: 40-200 caracteres (afeta a resolução)
+- **Tamanho da Fonte**: 4-12px (para o GIF final)
+- **Cor do Texto**: Qualquer cor hexadecimal
+- **Cor de Fundo**: Qualquer cor hexadecimal
+- **Inverter Brilho**: Inverte o mapeamento de caracteres
 
-## Learn More
+## 📝 Notas
 
-To learn more about Next.js, take a look at the following resources:
+- Arquivos GIF grandes podem levar mais tempo para processar
+- A qualidade do ASCII depende da largura escolhida
+- Suporta dark mode automaticamente
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## 🤝 Contribuindo
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+Contribuições são bem-vindas! Sinta-se à vontade para abrir issues ou pull requests.
 
-## Deploy on Vercel
+## 📄 Licença
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+MIT
