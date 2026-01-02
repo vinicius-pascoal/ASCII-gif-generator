@@ -116,5 +116,7 @@ export async function createAsciiGif(
 
   // Converte o buffer em Blob
   const buffer = encoder.out.getData();
-  return new Blob([buffer], { type: 'image/gif' });
+  // Converte Uint8Array para ArrayBuffer compatível com Blob
+  const arrayBuffer = new Uint8Array(buffer).buffer;
+  return new Blob([arrayBuffer], { type: 'image/gif' });
 }

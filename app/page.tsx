@@ -75,7 +75,7 @@ export default function Home() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-50 to-gray-100 dark:from-gray-900 dark:to-black">
+    <div className="min-h-screen bg-linear-to-br from-gray-50 to-gray-100 dark:from-gray-900 dark:to-black">
       <div className="container mx-auto px-4 py-8 max-w-7xl">
         {/* Header */}
         <header className="text-center mb-12">
@@ -105,6 +105,7 @@ export default function Home() {
                   GIF Original
                 </h2>
                 <div className="bg-white dark:bg-gray-800 rounded-lg p-4 border border-gray-200 dark:border-gray-700">
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
                   <img
                     src={originalPreview}
                     alt="Original GIF"
