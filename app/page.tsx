@@ -53,7 +53,8 @@ export default function Home() {
         asciiFrames,
         currentSettings.fontSize,
         currentSettings.textColor,
-        currentSettings.backgroundColor
+        currentSettings.backgroundColor,
+        currentSettings.speed
       );
 
       // Baixa o arquivo

@@ -25,12 +25,10 @@ export default function AsciiPreview({
     if (!isPlaying || frames.length === 0) return;
 
     const currentFrame = frames[currentFrameIndex];
-    // Ajusta o delay para uma reprodução mais suave (mínimo 30ms)
-    const adjustedDelay = Math.max(currentFrame.delay * 0.8, 30);
-
+    // Usa o delay exato do frame original
     const timeoutId = setTimeout(() => {
       setCurrentFrameIndex((prev) => (prev + 1) % frames.length);
-    }, adjustedDelay);
+    }, currentFrame.delay);
 
     return () => clearTimeout(timeoutId);
   }, [currentFrameIndex, frames, isPlaying]);

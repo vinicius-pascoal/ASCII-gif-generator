@@ -16,6 +16,7 @@ export interface ConversionSettings {
   textColor: string;
   backgroundColor: string;
   invert: boolean;
+  speed: number;
 }
 
 export default function ControlPanel({
@@ -30,6 +31,7 @@ export default function ControlPanel({
   const [textColor, setTextColor] = useState('#00ff00');
   const [backgroundColor, setBackgroundColor] = useState('#000000');
   const [invert, setInvert] = useState(false);
+  const [speed, setSpeed] = useState(1.0);
 
   const handleConvert = () => {
     onConvert({
@@ -37,7 +39,8 @@ export default function ControlPanel({
       fontSize,
       textColor,
       backgroundColor,
-      invert
+      invert,
+      speed
     });
   };
 
@@ -132,6 +135,27 @@ export default function ControlPanel({
           <label htmlFor="invert" className="ml-2 text-sm font-medium text-gray-700 dark:text-gray-300">
             Inverter brilho
           </label>
+        </div>
+
+        {/* Velocidade do GIF */}
+        <div>
+          <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+            Velocidade do GIF: {speed.toFixed(1)}x
+          </label>
+          <input
+            type="range"
+            min="0.25"
+            max="3"
+            step="0.25"
+            value={speed}
+            onChange={(e) => setSpeed(Number(e.target.value))}
+            className="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer dark:bg-gray-700"
+          />
+          <div className="flex justify-between text-xs text-gray-500 dark:text-gray-400 mt-1">
+            <span>Mais lento (0.25x)</span>
+            <span>Normal (1x)</span>
+            <span>Mais rápido (3x)</span>
+          </div>
         </div>
       </div>
 

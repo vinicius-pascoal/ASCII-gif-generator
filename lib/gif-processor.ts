@@ -73,7 +73,8 @@ export async function createAsciiGif(
   asciiFrames: AsciiFrame[],
   fontSize: number = 10,
   textColor: string = '#00ff00',
-  backgroundColor: string = '#000000'
+  backgroundColor: string = '#000000',
+  speedMultiplier: number = 1.0
 ): Promise<Blob> {
   // Importação dinâmica do gif-encoder-2
   const GIFEncoder = (await import('gif-encoder-2')).default;
@@ -104,7 +105,10 @@ export async function createAsciiGif(
       backgroundColor
     );
 
-    encoder.setDelay(frame.delay);
+    // Aplica o multiplicador de velocidade
+    // speedMultiplier > 1 = mais rápido, < 1 = mais lento
+    const adjustedDelay = Math.round(frame.delay / speedMultiplier);
+    encoder.setDelay(Math.max(adjustedDelay, 1)); // Mínimo de 1ms
     encoder.addFrame(imageData.data);
   }
 
