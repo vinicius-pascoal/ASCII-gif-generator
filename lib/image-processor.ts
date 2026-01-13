@@ -51,10 +51,11 @@ export async function parseImageFile(file: File): Promise<ImageData> {
 export async function convertImageToAscii(
   file: File,
   width: number = 80,
-  invert: boolean = false
+  invert: boolean = false,
+  chars?: string
 ): Promise<string> {
   const imageData = await parseImageFile(file);
-  return imageDataToAscii(imageData, { width, invert });
+  return imageDataToAscii(imageData, { width, invert, chars });
 }
 
 /**

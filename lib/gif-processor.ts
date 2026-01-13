@@ -58,10 +58,11 @@ export async function parseGifFile(file: File): Promise<ProcessedFrame[]> {
 export function convertFramesToAscii(
   frames: ProcessedFrame[],
   width: number = 80,
-  invert: boolean = false
+  invert: boolean = false,
+  chars?: string
 ): AsciiFrame[] {
   return frames.map(frame => ({
-    ascii: imageDataToAscii(frame.imageData, { width, invert }),
+    ascii: imageDataToAscii(frame.imageData, { width, invert, chars }),
     delay: frame.delay
   }));
 }

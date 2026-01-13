@@ -21,6 +21,7 @@ export interface ConversionSettings {
   backgroundColor: string;
   invert: boolean;
   speed: number;
+  chars: string;
 }
 
 export default function ControlPanel({
@@ -40,6 +41,18 @@ export default function ControlPanel({
   const [backgroundColor, setBackgroundColor] = useState('#000000');
   const [invert, setInvert] = useState(false);
   const [speed, setSpeed] = useState(1.0);
+  const [chars, setChars] = useState(' .:-=+*#%@');
+
+  // Presets de caracteres
+  const CHAR_PRESETS = {
+    default: ' .:-=+*#%@',
+    simple: ' .oO8',
+    blocks: ' ░▒▓█',
+    detailed: ' .\'`^",:;Il!i><~+_-?][}{1)(|\\/tfjrxnuvczXYUJCLQ0OZmwqpdbkhao*#MW&8%B@$',
+    numeric: ' 0123456789',
+    binary: ' 01',
+    dots: ' .·•●',
+  };
 
   // Limites de caracteres
   const LIMITS = {
@@ -85,7 +98,8 @@ export default function ControlPanel({
       textColor,
       backgroundColor,
       invert,
-      speed
+      speed,
+      chars
     });
   };
 
@@ -233,6 +247,87 @@ export default function ControlPanel({
             </div>
           </div>
         )}
+
+        {/* Caracteres ASCII */}
+        <div className="bg-gradient-to-br from-gray-700/50 to-gray-800/50 border-2 border-cyan-500/20 rounded-xl p-5 space-y-4">
+          <h3 className="text-base font-bold text-gray-100 flex items-center gap-2">
+            <span className="text-xl">🔤</span>
+            Caracteres ASCII
+          </h3>
+
+          {/* Campo de texto para caracteres customizados */}
+          <div>
+            <label className="block text-sm font-medium text-gray-300 mb-2">
+              Caracteres (do claro ao escuro): <span className="text-cyan-400">{chars.length} caracteres</span>
+            </label>
+            <input
+              type="text"
+              value={chars}
+              onChange={(e) => setChars(e.target.value || ' ')}
+              placeholder="Digite os caracteres..."
+              className="w-full px-4 py-2 bg-gray-900/70 border border-cyan-500/30 rounded-lg text-gray-100 placeholder-gray-500 focus:outline-none focus:border-cyan-400 focus:ring-2 focus:ring-cyan-500/20 font-mono text-sm"
+            />
+            <p className="text-xs text-gray-400 mt-2 italic">
+              💡 Organize do caractere mais claro ao mais escuro. Mínimo 2 caracteres.
+            </p>
+          </div>
+
+          {/* Presets de caracteres */}
+          <div>
+            <p className="text-sm font-semibold text-gray-300 mb-3">⚡ Presets:</p>
+            <div className="grid grid-cols-2 gap-2">
+              <button
+                onClick={() => setChars(CHAR_PRESETS.default)}
+                className="text-xs font-medium bg-gradient-to-r from-cyan-600 to-blue-600 hover:from-cyan-500 hover:to-blue-500 text-white px-3 py-2 rounded-lg transition-all duration-300 transform hover:scale-105 shadow-[0_0_15px_rgba(34,211,238,0.4)]"
+                title={CHAR_PRESETS.default}
+              >
+                Padrão (10)
+              </button>
+              <button
+                onClick={() => setChars(CHAR_PRESETS.simple)}
+                className="text-xs font-medium bg-gradient-to-r from-cyan-600 to-blue-600 hover:from-cyan-500 hover:to-blue-500 text-white px-3 py-2 rounded-lg transition-all duration-300 transform hover:scale-105 shadow-[0_0_15px_rgba(34,211,238,0.4)]"
+                title={CHAR_PRESETS.simple}
+              >
+                Simples (5)
+              </button>
+              <button
+                onClick={() => setChars(CHAR_PRESETS.blocks)}
+                className="text-xs font-medium bg-gradient-to-r from-green-600 to-teal-600 hover:from-green-500 hover:to-teal-500 text-white px-3 py-2 rounded-lg transition-all duration-300 transform hover:scale-105 shadow-[0_0_15px_rgba(16,185,129,0.4)]"
+                title={CHAR_PRESETS.blocks}
+              >
+                Blocos (5)
+              </button>
+              <button
+                onClick={() => setChars(CHAR_PRESETS.detailed)}
+                className="text-xs font-medium bg-gradient-to-r from-green-600 to-teal-600 hover:from-green-500 hover:to-teal-500 text-white px-3 py-2 rounded-lg transition-all duration-300 transform hover:scale-105 shadow-[0_0_15px_rgba(16,185,129,0.4)]"
+                title="Muito detalhado"
+              >
+                Detalhado (70)
+              </button>
+              <button
+                onClick={() => setChars(CHAR_PRESETS.numeric)}
+                className="text-xs font-medium bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-500 hover:to-pink-500 text-white px-3 py-2 rounded-lg transition-all duration-300 transform hover:scale-105 shadow-[0_0_15px_rgba(168,85,247,0.4)]"
+                title={CHAR_PRESETS.numeric}
+              >
+                Numérico (11)
+              </button>
+              <button
+                onClick={() => setChars(CHAR_PRESETS.binary)}
+                className="text-xs font-medium bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-500 hover:to-pink-500 text-white px-3 py-2 rounded-lg transition-all duration-300 transform hover:scale-105 shadow-[0_0_15px_rgba(168,85,247,0.4)]"
+                title={CHAR_PRESETS.binary}
+              >
+                Binário (3)
+              </button>
+              <button
+                onClick={() => setChars(CHAR_PRESETS.dots)}
+                className="text-xs font-medium bg-gradient-to-r from-orange-600 to-red-600 hover:from-orange-500 hover:to-red-500 text-white px-3 py-2 rounded-lg transition-all duration-300 transform hover:scale-105 shadow-[0_0_15px_rgba(249,115,22,0.4)] col-span-2"
+                title={CHAR_PRESETS.dots}
+              >
+                Pontos (5)
+              </button>
+            </div>
+          </div>
+        </div>
 
         {/* Tamanho da fonte */}
         <div>

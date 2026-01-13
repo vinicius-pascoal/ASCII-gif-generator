@@ -73,13 +73,13 @@ export default function Home() {
         const frames = await parseGifFile(selectedFile);
 
         // Converte para ASCII
-        const ascii = convertFramesToAscii(frames, settings.width, settings.invert);
+        const ascii = convertFramesToAscii(frames, settings.width, settings.invert, settings.chars);
 
         setAsciiFrames(ascii);
         setStaticAscii('');
       } else {
         // Converte imagem estática para ASCII
-        const ascii = await convertImageToAscii(selectedFile, settings.width, settings.invert);
+        const ascii = await convertImageToAscii(selectedFile, settings.width, settings.invert, settings.chars);
 
         setStaticAscii(ascii);
         setAsciiFrames([]);
