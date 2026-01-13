@@ -60,11 +60,11 @@ export default function GifUploader({ onFileSelect, disabled }: GifUploaderProps
       />
       <div
         className={`
-          relative border-2 border-dashed rounded-lg p-8 text-center cursor-pointer
-          transition-all duration-200
+          relative border-3 border-dashed rounded-2xl p-12 text-center cursor-pointer
+          transition-all duration-300 transform
           ${dragActive
-            ? 'border-blue-500 bg-blue-50 dark:bg-blue-950'
-            : 'border-gray-300 dark:border-gray-700 hover:border-gray-400 dark:hover:border-gray-600'
+            ? 'border-cyan-400 bg-gradient-to-br from-cyan-500/20 to-green-500/20 scale-105 shadow-[0_0_40px_rgba(34,211,238,0.6)] animate-pulse-glow'
+            : 'border-cyan-500/40 bg-gray-800/70 hover:border-cyan-400 hover:scale-105 hover:shadow-[0_0_30px_rgba(34,211,238,0.4)] backdrop-blur-sm'
           }
           ${disabled ? 'opacity-50 cursor-not-allowed' : ''}
         `}
@@ -74,18 +74,18 @@ export default function GifUploader({ onFileSelect, disabled }: GifUploaderProps
         onDrop={handleDrop}
         onClick={disabled ? undefined : handleClick}
       >
-        <div className="space-y-4">
-          <div className="text-6xl">🎬</div>
+        <div className="space-y-6">
+          <div className="text-8xl animate-float">🎬</div>
           <div>
-            <p className="text-lg font-semibold text-gray-700 dark:text-gray-300">
+            <p className="text-2xl font-bold bg-gradient-to-r from-cyan-400 to-green-400 bg-clip-text text-transparent drop-shadow-[0_0_10px_rgba(34,211,238,0.5)]">
               Arraste um GIF aqui
             </p>
-            <p className="text-sm text-gray-500 dark:text-gray-400 mt-2">
+            <p className="text-base text-gray-300 mt-3 font-medium">
               ou clique para selecionar um arquivo
             </p>
           </div>
-          <p className="text-xs text-gray-400 dark:text-gray-500">
-            Apenas arquivos .gif são aceitos
+          <p className="text-sm text-gray-400 bg-gray-700/80 rounded-lg px-4 py-2 inline-block border border-cyan-500/20">
+            📎 Apenas arquivos .gif são aceitos
           </p>
         </div>
       </div>

@@ -160,14 +160,34 @@ export default function Home() {
   };
 
   return (
-    <div className="min-h-screen bg-linear-to-br from-gray-50 to-gray-100 dark:from-gray-900 dark:to-black">
-      <div className="container mx-auto px-4 py-8 max-w-7xl">
+    <div className="min-h-screen relative bg-[#3F3F3F]">
+      {/* Background SVG Pattern */}
+      <div
+        className="absolute inset-0 opacity-100"
+        style={{
+          backgroundImage: "url('/fundo.svg')",
+          backgroundRepeat: 'repeat',
+          backgroundSize: '100px 100px'
+        }}
+      />
+
+      {/* Overlay com gradiente sutil */}
+      <div className="absolute inset-0 bg-gradient-to-br from-gray-900/50 via-transparent to-gray-900/50" />
+
+      {/* Background decorativo com cores coerentes */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        <div className="absolute top-20 left-10 w-72 h-72 bg-cyan-500 dark:bg-cyan-600 rounded-full mix-blend-multiply dark:mix-blend-soft-light filter blur-xl opacity-10 animate-float"></div>
+        <div className="absolute top-40 right-10 w-96 h-96 bg-green-500 dark:bg-green-600 rounded-full mix-blend-multiply dark:mix-blend-soft-light filter blur-xl opacity-10 animate-float" style={{ animationDelay: '2s' }}></div>
+        <div className="absolute bottom-20 left-1/3 w-80 h-80 bg-teal-500 dark:bg-teal-600 rounded-full mix-blend-multiply dark:mix-blend-soft-light filter blur-xl opacity-10 animate-float" style={{ animationDelay: '4s' }}></div>
+      </div>
+
+      <div className="container mx-auto px-4 py-8 max-w-7xl relative z-10">
         {/* Header */}
         <header className="text-center mb-12">
-          <h1 className="text-5xl font-bold text-gray-900 dark:text-white mb-3">
+          <h1 className="text-6xl font-bold bg-gradient-to-r from-cyan-400 via-green-400 to-teal-400 bg-clip-text text-transparent mb-4 animate-gradient drop-shadow-[0_0_30px_rgba(34,211,238,0.5)]">
             ASCII Art Converter
           </h1>
-          <p className="text-lg text-gray-600 dark:text-gray-400">
+          <p className="text-xl text-gray-300 font-medium drop-shadow-lg">
             Transforme GIFs e imagens em arte ASCII
           </p>
         </header>
@@ -175,21 +195,21 @@ export default function Home() {
         {/* Mode Selector */}
         {!selectedFile && (
           <div className="flex justify-center mb-8">
-            <div className="inline-flex rounded-lg border border-gray-300 dark:border-gray-700 p-1 bg-white dark:bg-gray-800">
+            <div className="inline-flex rounded-xl border-2 border-cyan-500/30 p-1.5 bg-gray-800/90 backdrop-blur-sm shadow-[0_0_30px_rgba(34,211,238,0.3)]">
               <button
                 onClick={() => handleModeChange('gif')}
-                className={`px-6 py-2 rounded-md text-sm font-medium transition-all ${mode === 'gif'
-                  ? 'bg-blue-500 text-white'
-                  : 'text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700'
+                className={`px-8 py-3 rounded-lg text-sm font-semibold transition-all duration-300 ${mode === 'gif'
+                  ? 'bg-gradient-to-r from-cyan-500 to-green-500 text-gray-900 shadow-[0_0_20px_rgba(34,211,238,0.6)] scale-105'
+                  : 'text-gray-300 hover:bg-gray-700/50 hover:text-cyan-400'
                   }`}
               >
                 🎬 GIF
               </button>
               <button
                 onClick={() => handleModeChange('image')}
-                className={`px-6 py-2 rounded-md text-sm font-medium transition-all ${mode === 'image'
-                  ? 'bg-blue-500 text-white'
-                  : 'text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700'
+                className={`px-8 py-3 rounded-lg text-sm font-semibold transition-all duration-300 ${mode === 'image'
+                  ? 'bg-gradient-to-r from-cyan-500 to-green-500 text-gray-900 shadow-[0_0_20px_rgba(34,211,238,0.6)] scale-105'
+                  : 'text-gray-300 hover:bg-gray-700/50 hover:text-cyan-400'
                   }`}
               >
                 🖼️ Imagem
@@ -215,19 +235,19 @@ export default function Home() {
             {/* Left Column - Previews */}
             <div className="space-y-6">
               {/* Original File */}
-              <div>
-                <h2 className="text-xl font-semibold text-gray-900 dark:text-white mb-3">
-                  {mode === 'gif' ? 'GIF Original' : 'Imagem Original'}
+              <div className="transform transition-all duration-300 hover:scale-[1.02]">
+                <h2 className="text-2xl font-bold bg-gradient-to-r from-cyan-400 to-green-400 bg-clip-text text-transparent mb-4 drop-shadow-[0_0_10px_rgba(34,211,238,0.5)]">
+                  {mode === 'gif' ? '🎬 GIF Original' : '🖼️ Imagem Original'}
                 </h2>
-                <div className="bg-white dark:bg-gray-800 rounded-lg p-4 border border-gray-200 dark:border-gray-700">
+                <div className="bg-gray-800/90 backdrop-blur-sm rounded-2xl p-6 border-2 border-cyan-500/30 shadow-[0_0_30px_rgba(34,211,238,0.3)]">
                   {/* eslint-disable-next-line @next/next/no-img-element */}
                   <img
                     src={originalPreview}
                     alt={mode === 'gif' ? 'Original GIF' : 'Original Image'}
-                    className="w-full h-auto rounded"
+                    className="w-full h-auto rounded-xl shadow-lg"
                   />
-                  <p className="text-sm text-gray-600 dark:text-gray-400 mt-2">
-                    {selectedFile.name}
+                  <p className="text-sm text-gray-300 mt-4 font-medium">
+                    📁 {selectedFile.name}
                   </p>
                 </div>
                 <button
@@ -237,7 +257,7 @@ export default function Home() {
                     setAsciiFrames([]);
                     setStaticAscii('');
                   }}
-                  className="mt-3 text-sm text-blue-600 hover:text-blue-700 dark:text-blue-400 dark:hover:text-blue-300"
+                  className="mt-4 text-sm font-semibold text-cyan-400 hover:text-cyan-300 transition-colors drop-shadow-lg"
                 >
                   ← Escolher outro arquivo
                 </button>
@@ -245,30 +265,34 @@ export default function Home() {
 
               {/* ASCII Preview */}
               {mode === 'gif' && asciiFrames.length > 0 && currentSettings && (
-                <div>
-                  <h2 className="text-xl font-semibold text-gray-900 dark:text-white mb-3">
+                <div className="transform transition-all duration-300 hover:scale-[1.02]">
+                  <h2 className="text-2xl font-bold bg-gradient-to-r from-green-400 to-teal-400 bg-clip-text text-transparent mb-4 drop-shadow-[0_0_10px_rgba(16,185,129,0.5)]">
                     Prévia ASCII
                   </h2>
-                  <AsciiPreview
-                    frames={asciiFrames}
-                    fontSize={currentSettings.fontSize}
-                    textColor={currentSettings.textColor}
-                    backgroundColor={currentSettings.backgroundColor}
-                  />
+                  <div className="bg-gray-800/90 backdrop-blur-sm rounded-2xl p-6 border-2 border-green-500/30 shadow-[0_0_30px_rgba(16,185,129,0.3)]">
+                    <AsciiPreview
+                      frames={asciiFrames}
+                      fontSize={currentSettings.fontSize}
+                      textColor={currentSettings.textColor}
+                      backgroundColor={currentSettings.backgroundColor}
+                    />
+                  </div>
                 </div>
               )}
 
               {mode === 'image' && staticAscii && currentSettings && (
-                <div>
-                  <h2 className="text-xl font-semibold text-gray-900 dark:text-white mb-3">
+                <div className="transform transition-all duration-300 hover:scale-[1.02]">
+                  <h2 className="text-2xl font-bold bg-gradient-to-r from-green-400 to-teal-400 bg-clip-text text-transparent mb-4 drop-shadow-[0_0_10px_rgba(16,185,129,0.5)]">
                     Prévia ASCII
                   </h2>
-                  <StaticAsciiPreview
-                    ascii={staticAscii}
-                    fontSize={currentSettings.fontSize}
-                    textColor={currentSettings.textColor}
-                    backgroundColor={currentSettings.backgroundColor}
-                  />
+                  <div className="bg-gray-800/90 backdrop-blur-sm rounded-2xl p-6 border-2 border-green-500/30 shadow-[0_0_30px_rgba(16,185,129,0.3)]">
+                    <StaticAsciiPreview
+                      ascii={staticAscii}
+                      fontSize={currentSettings.fontSize}
+                      textColor={currentSettings.textColor}
+                      backgroundColor={currentSettings.backgroundColor}
+                    />
+                  </div>
                 </div>
               )}
             </div>
@@ -289,7 +313,6 @@ export default function Home() {
             </div>
           </div>
         )}
-
       </div>
     </div>
   );

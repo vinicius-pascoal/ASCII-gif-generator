@@ -90,9 +90,9 @@ export default function ControlPanel({
   };
 
   return (
-    <div className="w-full space-y-6 bg-gray-50 dark:bg-gray-900 p-6 rounded-lg border border-gray-200 dark:border-gray-800">
-      <h2 className="text-xl font-semibold text-gray-900 dark:text-gray-100">
-        Configurações
+    <div className="w-full space-y-6 bg-gradient-to-br from-gray-800 to-gray-900 p-8 rounded-2xl border-2 border-cyan-500/30 shadow-[0_0_40px_rgba(34,211,238,0.3)] backdrop-blur-sm">
+      <h2 className="text-2xl font-bold bg-gradient-to-r from-cyan-400 to-green-400 bg-clip-text text-transparent drop-shadow-[0_0_10px_rgba(34,211,238,0.5)]">
+        ⚙️ Configurações
       </h2>
 
       <div className="space-y-4">
@@ -113,14 +113,15 @@ export default function ControlPanel({
 
         {/* Status de Plataformas */}
         {platformStatus && (
-          <div className="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg p-4 space-y-3">
-            <h3 className="text-sm font-semibold text-gray-900 dark:text-gray-100">
+          <div className="bg-gradient-to-br from-gray-700 to-gray-800 border-2 border-green-500/30 rounded-xl p-5 space-y-4 shadow-[0_0_20px_rgba(16,185,129,0.2)]">
+            <h3 className="text-base font-bold text-gray-100 flex items-center gap-2">
+              <span className="text-xl">📱</span>
               Compatibilidade de Plataformas
             </h3>
 
             {/* Contador de caracteres */}
-            <div className="text-xs text-gray-600 dark:text-gray-400">
-              Tamanho atual: <span className="font-mono font-semibold">{asciiLength.toLocaleString()}</span> caracteres
+            <div className="text-sm text-gray-200 bg-gray-600/80 rounded-lg p-3 font-medium border border-cyan-500/20">
+              📊 Tamanho atual: <span className="font-mono font-bold text-cyan-400">{asciiLength.toLocaleString()}</span> caracteres
             </div>
 
             {/* WhatsApp */}
@@ -198,35 +199,35 @@ export default function ControlPanel({
             </div>
 
             {/* Presets rápidos */}
-            <div className="pt-2 border-t border-gray-200 dark:border-gray-700">
-              <p className="text-xs text-gray-600 dark:text-gray-400 mb-2">Presets rápidos:</p>
+            <div className="pt-3 border-t-2 border-cyan-500/30">
+              <p className="text-sm font-semibold text-gray-300 mb-3">⚡ Presets rápidos:</p>
               <div className="grid grid-cols-2 gap-2">
                 <button
                   onClick={() => setWidth(35)}
-                  className="text-xs bg-gray-200 dark:bg-gray-700 hover:bg-gray-300 dark:hover:bg-gray-600 px-2 py-1 rounded"
+                  className="text-sm font-medium bg-gradient-to-r from-cyan-600 to-blue-600 hover:from-cyan-500 hover:to-blue-500 text-white px-3 py-2 rounded-lg transition-all duration-300 transform hover:scale-105 shadow-[0_0_15px_rgba(34,211,238,0.4)]"
                 >
                   Discord (35)
                 </button>
                 <button
                   onClick={() => setWidth(50)}
-                  className="text-xs bg-gray-200 dark:bg-gray-700 hover:bg-gray-300 dark:hover:bg-gray-600 px-2 py-1 rounded"
+                  className="text-sm font-medium bg-gradient-to-r from-cyan-600 to-blue-600 hover:from-cyan-500 hover:to-blue-500 text-white px-3 py-2 rounded-lg transition-all duration-300 transform hover:scale-105 shadow-[0_0_15px_rgba(34,211,238,0.4)]"
                 >
                   Discord Nitro (50)
                 </button>
                 <button
                   onClick={() => setWidth(60)}
-                  className="text-xs bg-gray-200 dark:bg-gray-700 hover:bg-gray-300 dark:hover:bg-gray-600 px-2 py-1 rounded"
+                  className="text-sm font-medium bg-gradient-to-r from-green-600 to-teal-600 hover:from-green-500 hover:to-teal-500 text-white px-3 py-2 rounded-lg transition-all duration-300 transform hover:scale-105 shadow-[0_0_15px_rgba(16,185,129,0.4)]"
                 >
                   WhatsApp Mobile (60)
                 </button>
                 <button
                   onClick={() => setWidth(80)}
-                  className="text-xs bg-gray-200 dark:bg-gray-700 hover:bg-gray-300 dark:hover:bg-gray-600 px-2 py-1 rounded"
+                  className="text-sm font-medium bg-gradient-to-r from-green-600 to-teal-600 hover:from-green-500 hover:to-teal-500 text-white px-3 py-2 rounded-lg transition-all duration-300 transform hover:scale-105 shadow-[0_0_15px_rgba(16,185,129,0.4)]"
                 >
                   WhatsApp Desktop (80)
                 </button>
               </div>
-              <p className="text-xs text-gray-500 dark:text-gray-500 mt-2 italic">
+              <p className="text-xs text-gray-400 mt-3 italic bg-cyan-500/10 rounded-lg p-2 border border-cyan-500/20">
                 💡 WhatsApp quebra linhas por largura de tela. Use valores menores para mobile.
               </p>
             </div>
@@ -331,36 +332,36 @@ export default function ControlPanel({
         <button
           onClick={handleConvert}
           disabled={isConverting || isDownloading}
-          className="flex-1 bg-blue-600 hover:bg-blue-700 disabled:bg-gray-400 disabled:cursor-not-allowed text-white font-semibold py-3 px-6 rounded-lg transition-colors duration-200"
+          className="flex-1 bg-gradient-to-r from-cyan-600 to-green-600 hover:from-cyan-500 hover:to-green-500 disabled:from-gray-600 disabled:to-gray-700 disabled:cursor-not-allowed text-white font-bold py-4 px-6 rounded-xl transition-all duration-300 transform hover:scale-105 shadow-[0_0_20px_rgba(34,211,238,0.4)] hover:shadow-[0_0_30px_rgba(34,211,238,0.6)]"
         >
-          {isConverting ? 'Convertendo...' : 'Converter para ASCII'}
+          {isConverting ? '⚡ Convertendo...' : '🎨 Converter para ASCII'}
         </button>
 
         <button
           onClick={onDownload}
           disabled={!hasPreview || isConverting || isDownloading}
-          className="flex-1 bg-green-600 hover:bg-green-700 disabled:bg-gray-400 disabled:cursor-not-allowed text-white font-semibold py-3 px-6 rounded-lg transition-colors duration-200"
+          className="flex-1 bg-gradient-to-r from-green-600 to-teal-600 hover:from-green-500 hover:to-teal-500 disabled:from-gray-600 disabled:to-gray-700 disabled:cursor-not-allowed text-white font-bold py-4 px-6 rounded-xl transition-all duration-300 transform hover:scale-105 shadow-[0_0_20px_rgba(16,185,129,0.4)] hover:shadow-[0_0_30px_rgba(16,185,129,0.6)]"
         >
-          {isDownloading ? 'Gerando GIF...' : 'Baixar GIF ASCII'}
+          {isDownloading ? '📦 Gerando...' : '💾 Baixar'}
         </button>
       </div>
 
       {/* Botão Copiar ASCII */}
       {canCopy && onCopy && (
-        <div className="pt-3">
+        <div>
           <button
             onClick={onCopy}
             disabled={!hasPreview || isCopying}
-            className="w-full bg-blue-600 hover:bg-blue-700 disabled:bg-gray-400 disabled:cursor-not-allowed text-white font-semibold py-3 px-6 rounded-lg transition-colors duration-200 flex items-center justify-center gap-2"
+            className="w-full bg-gradient-to-r from-teal-600 to-cyan-600 hover:from-teal-500 hover:to-cyan-500 disabled:from-gray-600 disabled:to-gray-700 disabled:cursor-not-allowed text-white font-bold py-4 px-6 rounded-xl transition-all duration-300 transform hover:scale-105 shadow-[0_0_20px_rgba(20,184,166,0.4)] hover:shadow-[0_0_30px_rgba(20,184,166,0.6)] flex items-center justify-center gap-3"
           >
             {isCopying ? (
               <>
-                <span>✓</span>
+                <span className="text-2xl">✓</span>
                 <span>Copiado!</span>
               </>
             ) : (
               <>
-                <span>📋</span>
+                <span className="text-2xl">📋</span>
                 <span>Copiar ASCII (Ctrl+C)</span>
               </>
             )}
